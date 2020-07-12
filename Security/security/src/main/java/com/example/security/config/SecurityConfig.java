@@ -1,5 +1,6 @@
 package com.example.security.config;
 
+import com.example.security.dto.dictionary.Role;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.context.annotation.Bean;
@@ -30,6 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "index", "/css/*", "/js*")
                 .permitAll()
+                .antMatchers("/api/**")
+                .hasAnyRole(Role.USER.name(), Role.ADMIN.name())
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -42,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         UserDetails user = User.builder()
                 .username("user")
                 .password(passwordEncoder.encode("password"))
-                .roles("USER")
+                .roles(Role.USER.name())
                 .build();
 
         return new InMemoryUserDetailsManager(user);
