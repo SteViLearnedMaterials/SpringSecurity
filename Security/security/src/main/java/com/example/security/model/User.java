@@ -1,5 +1,6 @@
 package com.example.security.model;
 
+import com.example.security.dto.dictionary.Role;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,5 +24,7 @@ public class User {
     Long id;
 
     String name;
+
+    Role role;
 }
 

@@ -1,4 +1,4 @@
-package com.example.security.dto;
+package com.example.security.dto.student;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserDto {
+public class StudentDto {
 
     Long id;
     String name;
